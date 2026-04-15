@@ -83,8 +83,8 @@ export default function Home() {
 
       <ProblemSection />
 
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <SectionHeading
             title="Why Choose Us"
             subtitle="Decades of experience helping educators navigate complex pension systems and retire with confidence."
@@ -97,8 +97,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-muted py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="bg-muted py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <SectionHeading
             title="What Educators Say"
             subtitle="Hear from teachers and administrators who planned their retirement with our help."

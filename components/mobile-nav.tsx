@@ -20,7 +20,7 @@ export function MobileNav() {
       </button>
 
       {open && (
-        <div className="absolute left-0 right-0 top-full z-50 border-b bg-background shadow-lg">
+        <div className="absolute left-0 right-0 top-full z-50 border-b bg-background shadow-lg max-h-[calc(100vh-5rem)] overflow-y-auto">
           <nav className="flex flex-col px-6 py-4 gap-1">
             {NAV_LINKS.map((link) => (
               <Link

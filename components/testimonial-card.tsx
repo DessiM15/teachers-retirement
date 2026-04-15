@@ -17,7 +17,7 @@ export function TestimonialCard({
   return (
     <Card className={cn("bg-card", className)}>
       <CardContent className="pt-2">
-        <blockquote className="mb-4 text-sm italic text-muted-foreground leading-relaxed">
+        <blockquote className="mb-4 text-sm italic text-muted-foreground leading-relaxed font-serif">
           &ldquo;{quote}&rdquo;
         </blockquote>
         <div>

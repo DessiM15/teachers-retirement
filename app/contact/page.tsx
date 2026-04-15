@@ -42,8 +42,8 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-primary py-16 sm:py-20">
-        <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
+      <section className="bg-primary py-20 sm:py-28">
+        <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
           <h1 className="text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
             Contact Us
           </h1>
@@ -54,8 +54,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <section id="lead-form" className="py-20 sm:py-28 scroll-mt-24">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
             <div className="lg:col-span-3">
               <ContactForm />

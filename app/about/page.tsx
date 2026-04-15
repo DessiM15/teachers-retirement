@@ -69,8 +69,8 @@ const credentials = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-primary py-16 sm:py-20">
-        <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
+      <section className="bg-primary py-20 sm:py-28">
+        <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
           <h1 className="text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
             About & Services
           </h1>
@@ -81,8 +81,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-4xl px-4 lg:px-8">
           <SectionHeading
             title="Our Mission"
             align="left"
@@ -109,8 +109,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-muted py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="bg-muted py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <SectionHeading
             title="Our Services"
             subtitle="Comprehensive pension and retirement services built for educators at every stage of their career."
@@ -138,8 +138,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-4xl px-4 lg:px-8">
           <SectionHeading
             title="Why Trust Us"
             subtitle="We hold ourselves to the highest standards of professionalism and client care."

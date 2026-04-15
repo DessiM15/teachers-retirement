@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function CalculatorPage() {
   return (
     <>
-      <section className="bg-primary py-16 sm:py-20">
-        <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
+      <section className="bg-primary py-20 sm:py-28">
+        <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
           <h1 className="text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
             Pension Calculator
           </h1>
@@ -23,8 +23,8 @@ export default function CalculatorPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-5xl px-4 lg:px-8">
           <PensionCalculator />
         </div>
       </section>

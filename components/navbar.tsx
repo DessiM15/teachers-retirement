@@ -60,7 +60,7 @@ export function Navbar() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/contact#lead-form"
             className={buttonVariants({ size: "lg" }) + " ml-4"}
           >
             Book Your Free Review
