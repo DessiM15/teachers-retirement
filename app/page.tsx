@@ -6,7 +6,7 @@ import {
   Clock,
   Award,
 } from "lucide-react";
-import { HeroVideo } from "@/components/hero-video";
+import { Hero } from "@/components/hero-video";
 import { SectionHeading } from "@/components/section-heading";
 import { FeatureCard } from "@/components/feature-card";
 import { TestimonialCard } from "@/components/testimonial-card";
@@ -75,18 +75,7 @@ const testimonials = [
 export default function Home() {
   return (
     <>
-      <HeroVideo
-        heading="Secure Your Retirement"
-        subheading="Expert pension consulting built exclusively for educators. We help you understand, maximize, and protect the benefits you have earned."
-        primaryCta={{
-          label: "Schedule Free Consultation",
-          href: "/contact",
-        }}
-        secondaryCta={{
-          label: "Calculate Your Pension",
-          href: "/calculator",
-        }}
-      />
+      <Hero />
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
