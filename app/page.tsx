@@ -5,7 +5,11 @@ import {
   TrendingUp,
   Clock,
   Award,
+  GraduationCap,
+  Briefcase,
+  UserCheck,
 } from "lucide-react";
+import Link from "next/link";
 import { Hero } from "@/components/hero-video";
 import { StatsBar } from "@/components/stats-bar";
 import { ProblemSection } from "@/components/problem-section";
@@ -13,6 +17,29 @@ import { SectionHeading } from "@/components/section-heading";
 import { FeatureCard } from "@/components/feature-card";
 import { TestimonialCard } from "@/components/testimonial-card";
 import { CtaSection } from "@/components/cta-section";
+import { Card, CardContent } from "@/components/ui/card";
+import { buttonVariants } from "@/components/ui/button";
+
+const whoWeServe = [
+  {
+    icon: GraduationCap,
+    title: "Teachers",
+    description:
+      "From first-year educators to 30-year veterans, we help certificated staff understand their pension, plan for the income gap, and retire with confidence.",
+  },
+  {
+    icon: Briefcase,
+    title: "Classified Staff",
+    description:
+      "Support staff, paraprofessionals, and office personnel deserve the same quality retirement education. We make sure they get it.",
+  },
+  {
+    icon: UserCheck,
+    title: "Administrators",
+    description:
+      "Principals, superintendents, and district leaders face unique retirement decisions. We provide the analysis to make them wisely.",
+  },
+];
 
 const features = [
   {
@@ -82,6 +109,49 @@ export default function Home() {
       <StatsBar />
 
       <ProblemSection />
+
+      {/* Who We Serve */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="text-center mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4 font-sans">
+              Who We Serve
+            </p>
+          </div>
+          <SectionHeading
+            title="Retirement Education for Every District Employee"
+            subtitle="Whether you're certificated, classified, or administrative — you deserve high-quality, unbiased retirement guidance at no cost."
+          />
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {whoWeServe.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Card key={item.title}>
+                  <CardContent className="pt-2 text-center">
+                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                      <Icon className="h-7 w-7 text-primary" />
+                    </div>
+                    <h3 className="mb-2 text-lg font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+          <div className="mt-10 text-center">
+            <Link
+              href="/services"
+              className={buttonVariants({ variant: "outline", size: "lg" })}
+            >
+              Explore Our Services
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">

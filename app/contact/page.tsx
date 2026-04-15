@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, Globe, Award } from "lucide-react";
+import { Phone, Globe, Award, Mail, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContactForm } from "@/components/contact-form";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -10,9 +10,15 @@ export const metadata: Metadata = {
     "Schedule a free consultation with our pension specialists. We are here to help you plan a secure retirement.",
 };
 
-const { agent } = SITE_CONFIG;
+const { agent, locations } = SITE_CONFIG;
 
 const contactInfo = [
+  {
+    icon: Phone,
+    label: "Toll-Free",
+    value: SITE_CONFIG.phone,
+    detail: "Mon-Fri, 8am-6pm",
+  },
   {
     icon: Phone,
     label: "Direct",
@@ -20,10 +26,10 @@ const contactInfo = [
     detail: "Call or text Rigoberto directly",
   },
   {
-    icon: Phone,
-    label: "Office",
-    value: agent.officePhone,
-    detail: "Mon-Fri, 8am-6pm",
+    icon: Mail,
+    label: "Email",
+    value: SITE_CONFIG.email,
+    detail: "We respond within 24 hours",
   },
   {
     icon: Globe,
@@ -35,7 +41,7 @@ const contactInfo = [
     icon: Award,
     label: "License",
     value: `No. ${agent.license}`,
-    detail: `${agent.name} -- ${agent.title}`,
+    detail: `${agent.name} — ${agent.title}`,
   },
 ];
 
@@ -84,6 +90,43 @@ export default function ContactPage() {
                 );
               })}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Office Locations */}
+      <section className="bg-muted py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Our Locations
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Serving educators across multiple states with local offices.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {locations.map((location) => (
+              <Card key={location.name}>
+                <CardContent className="pt-2">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                    <MapPin className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground">
+                    {location.name}
+                  </h3>
+                  {"address" in location && (
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {location.address}
+                    </p>
+                  )}
+                  <p className="text-sm text-muted-foreground">
+                    {location.city}, {location.state}{" "}
+                    {"zip" in location && location.zip}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

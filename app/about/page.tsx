@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import {
-  BookOpen,
-  PiggyBank,
-  ClipboardCheck,
+  Heart,
+  GraduationCap,
+  Scale,
   Users,
-  Receipt,
-  Timer,
   CheckCircle,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,57 +11,45 @@ import { SectionHeading } from "@/components/section-heading";
 import { CtaSection } from "@/components/cta-section";
 
 export const metadata: Metadata = {
-  title: "About & Services",
+  title: "About",
   description:
-    "Learn about our mission and the pension consulting services we provide to educators.",
+    "Learn about Teacher's Pension — our mission to educate educators, our family roots in public education, and our commitment to unbiased retirement guidance.",
 };
 
-const services = [
+const values = [
   {
-    icon: BookOpen,
-    title: "Pension Consulting",
+    icon: GraduationCap,
+    title: "Educating Educators",
     description:
-      "One-on-one guidance through your pension plan's rules, options, and deadlines so you can make informed decisions.",
+      "For over a decade, we have pursued our mission of providing high-quality, unbiased retirement education to the men and women who work tirelessly to educate our youth.",
   },
   {
-    icon: PiggyBank,
-    title: "Retirement Planning",
+    icon: Heart,
+    title: "Family-Owned, Education-Rooted",
     description:
-      "Comprehensive retirement plans that integrate your pension with Social Security, savings, and other income sources.",
+      "We are a family-owned business with children in the public school system and family members who are educators and administrators. We know and appreciate the value of educators.",
   },
   {
-    icon: ClipboardCheck,
-    title: "Benefits Review",
+    icon: Scale,
+    title: "Vendor-Neutral Philosophy",
     description:
-      "A thorough review of all available benefits including health insurance, sick leave buyback, and supplemental plans.",
+      "We are an education provider, not a sales organization. We work with many sub-vendors and investment providers to help employees plan and prepare for retirement through the power of education — not another sales pitch.",
   },
   {
     icon: Users,
-    title: "Spousal Planning",
+    title: "Led by Retired Educators",
     description:
-      "Coordinate pension elections and survivor benefits between spouses to maximize household income in retirement.",
-  },
-  {
-    icon: Receipt,
-    title: "Tax Strategy",
-    description:
-      "Tax-efficient withdrawal strategies to keep more of your retirement income and minimize your tax burden.",
-  },
-  {
-    icon: Timer,
-    title: "Early Retirement Analysis",
-    description:
-      "Detailed projections showing the financial impact of retiring early versus working additional years.",
+      "Our team includes retired superintendents who consult with district and county offices to promote financial wellness for employees. We understand the system because we lived it.",
   },
 ];
 
 const credentials = [
-  "Advisors who specialize exclusively in educator pension systems",
-  "Deep knowledge of state and district-specific retirement plans",
-  "Over 15 years of combined experience serving educators",
-  "Fiduciary standard -- we always act in your best interest",
-  "No commissions on product sales -- fee-only advisory model",
-  "Ongoing support through your entire transition to retirement",
+  "No-cost financial wellness education for all district employees",
+  "Product-neutral guidance — we advocate for you, not a carrier",
+  "Serve certificated, classified, confidential, and administrative staff",
+  "Over a decade of service to school districts nationwide",
+  "Consulting team includes retired superintendents and administrators",
+  "Committed to helping every employee achieve a dignified retirement",
 ];
 
 export default function AboutPage() {
@@ -72,21 +58,19 @@ export default function AboutPage() {
       <section className="bg-primary py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
           <h1 className="text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
-            About & Services
+            About Teacher&apos;s Pension
           </h1>
           <p className="mt-4 text-lg text-primary-foreground/80">
-            Dedicated to helping educators retire with confidence and financial
-            security.
+            Educating educators — because the people who dedicate their careers
+            to our children deserve expert guidance when planning their futures.
           </p>
         </div>
       </section>
 
+      {/* Mission Story */}
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-4 lg:px-8">
-          <SectionHeading
-            title="Our Mission"
-            align="left"
-          />
+          <SectionHeading title="Our Story" align="left" />
           <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
             <p>
               Teacher&apos;s Pension was founded on a simple belief: the people
@@ -94,41 +78,52 @@ export default function AboutPage() {
               guidance when it is time to plan their own futures.
             </p>
             <p>
-              Educator pension systems are complex. Rules vary by state and
-              district, formulas change over time, and the decisions you make at
-              retirement are often irrevocable. A single misstep can cost
-              thousands of dollars a year in lost benefits.
+              We are a family-owned business with children in the public school
+              system and family members who are educators and administrators. We
+              know firsthand the value that educators bring to our communities —
+              and we recognize the need for high-quality financial education for
+              both students and employees.
             </p>
             <p>
-              We exist to make sure that does not happen. Our team works
-              exclusively with educators -- teachers, administrators, counselors,
-              and support staff -- to analyze pension options, model retirement
-              scenarios, and build plans that align with each client&apos;s goals.
+              For over a decade, Teacher&apos;s Pension has been pursuing our
+              mission of &ldquo;educating educators&rdquo; by providing
+              high-quality and unbiased retirement education to educators across
+              the country. We are a consulting firm and an education provider
+              that works with many sub-vendors and investment providers to help
+              employees plan and prepare for retirement through the power of
+              education — not just another sales pitch.
+            </p>
+            <p>
+              Teacher&apos;s Pension supports districts in creating an
+              environment that advocates for dignified retirement for all
+              district employees through the delivery of no-cost retirement
+              education.
             </p>
           </div>
         </div>
       </section>
 
+      {/* Values */}
       <section className="bg-muted py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <SectionHeading
-            title="Our Services"
-            subtitle="Comprehensive pension and retirement services built for educators at every stage of their career."
+            title="What Drives Us"
+            subtitle="Our values shape every interaction, every recommendation, and every plan we build."
           />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => {
-              const Icon = service.icon;
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {values.map((value) => {
+              const Icon = value.icon;
               return (
-                <Card key={service.title}>
+                <Card key={value.title}>
                   <CardContent className="pt-2">
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <h3 className="mb-2 text-lg font-semibold text-foreground">
-                      {service.title}
+                      {value.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {service.description}
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {value.description}
                     </p>
                   </CardContent>
                 </Card>
@@ -138,11 +133,12 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Credentials */}
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-4 lg:px-8">
           <SectionHeading
-            title="Why Trust Us"
-            subtitle="We hold ourselves to the highest standards of professionalism and client care."
+            title="Our Commitment"
+            subtitle="We hold ourselves to the highest standards of service and integrity."
           />
           <ul className="space-y-4">
             {credentials.map((item) => (
