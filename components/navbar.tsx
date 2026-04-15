@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
@@ -9,6 +10,11 @@ import { MobileNav } from "@/components/mobile-nav";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // Only use transparent/white style on homepage before scroll
+  const solid = scrolled || !isHome;
 
   useEffect(() => {
     function onScroll() {
@@ -21,7 +27,7 @@ export function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
+        solid
           ? "bg-white shadow-md"
           : "bg-transparent"
       }`}
@@ -38,7 +44,7 @@ export function Navbar() {
           />
           <div className="hidden sm:block">
             <span className={`block text-xs tracking-wide font-sans transition-colors duration-300 ${
-              scrolled ? "text-muted-foreground" : "text-white"
+              solid ? "text-muted-foreground" : "text-white"
             }`}>
               Retirement & Insurance Specialist
             </span>
@@ -51,7 +57,7 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                scrolled
+                solid
                   ? "text-foreground/80 hover:text-foreground hover:bg-muted"
                   : "text-white/90 hover:text-white"
               }`}
