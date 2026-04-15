@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone } from "lucide-react";
+
+const { agent } = SITE_CONFIG;
 
 export function Footer() {
   return (
@@ -43,17 +45,19 @@ export function Footer() {
               Contact
             </h3>
             <div className="flex flex-col gap-3">
+              <p className="text-sm font-medium text-background">
+                {agent.name}
+              </p>
+              <p className="text-xs text-background/60">
+                {agent.title} | License No. {agent.license}
+              </p>
               <div className="flex items-center gap-2 text-sm text-background/70">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>(555) 123-4567</span>
+                <span>Direct: {agent.directPhone}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-background/70">
-                <Mail className="h-4 w-4 text-primary" />
-                <span>info@teacherspension.com</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-background/70">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span>123 Education Blvd, Suite 200</span>
+                <Phone className="h-4 w-4 text-primary" />
+                <span>Office: {agent.officePhone}</span>
               </div>
             </div>
           </div>

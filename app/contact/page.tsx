@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Globe, Award } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContactForm } from "@/components/contact-form";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -9,30 +10,32 @@ export const metadata: Metadata = {
     "Schedule a free consultation with our pension specialists. We are here to help you plan a secure retirement.",
 };
 
+const { agent } = SITE_CONFIG;
+
 const contactInfo = [
   {
     icon: Phone,
-    label: "Phone",
-    value: "(555) 123-4567",
+    label: "Direct",
+    value: agent.directPhone,
+    detail: "Call or text Rigoberto directly",
+  },
+  {
+    icon: Phone,
+    label: "Office",
+    value: agent.officePhone,
     detail: "Mon-Fri, 8am-6pm",
   },
   {
-    icon: Mail,
-    label: "Email",
-    value: "info@teacherspension.com",
-    detail: "We respond within 1 business day",
+    icon: Globe,
+    label: "Website",
+    value: "tpensions.com",
+    detail: "Learn more about our services",
   },
   {
-    icon: MapPin,
-    label: "Office",
-    value: "123 Education Blvd, Suite 200",
-    detail: "By appointment only",
-  },
-  {
-    icon: Clock,
-    label: "Business Hours",
-    value: "Monday - Friday",
-    detail: "8:00 AM - 6:00 PM EST",
+    icon: Award,
+    label: "License",
+    value: `No. ${agent.license}`,
+    detail: `${agent.name} -- ${agent.title}`,
   },
 ];
 
@@ -46,7 +49,7 @@ export default function ContactPage() {
           </h1>
           <p className="mt-4 text-lg text-primary-foreground/80">
             Ready to take the next step? Reach out for a free, no-obligation
-            consultation with one of our pension specialists.
+            consultation with {agent.name}.
           </p>
         </div>
       </section>
