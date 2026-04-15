@@ -37,7 +37,9 @@ export function Navbar() {
             priority
           />
           <div className="hidden sm:block">
-            <span className="block text-xs tracking-wide text-muted-foreground font-sans">
+            <span className={`block text-xs tracking-wide font-sans transition-colors duration-300 ${
+              scrolled ? "text-muted-foreground" : "text-white"
+            }`}>
               Retirement & Insurance Specialist
             </span>
           </div>
