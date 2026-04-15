@@ -1,65 +1,127 @@
-import Image from "next/image";
+import {
+  Shield,
+  Calculator,
+  Users,
+  TrendingUp,
+  Clock,
+  Award,
+} from "lucide-react";
+import { HeroVideo } from "@/components/hero-video";
+import { SectionHeading } from "@/components/section-heading";
+import { FeatureCard } from "@/components/feature-card";
+import { TestimonialCard } from "@/components/testimonial-card";
+import { CtaSection } from "@/components/cta-section";
+
+const features = [
+  {
+    icon: Shield,
+    title: "Pension Protection",
+    description:
+      "We help you understand and maximize your pension benefits so nothing is left on the table.",
+  },
+  {
+    icon: Calculator,
+    title: "Benefit Analysis",
+    description:
+      "Detailed calculations of your projected retirement income based on your unique service history.",
+  },
+  {
+    icon: Users,
+    title: "Spousal Planning",
+    description:
+      "Coordinate benefits between spouses to optimize your combined retirement income.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Investment Guidance",
+    description:
+      "Supplement your pension with smart investment strategies tailored for educators.",
+  },
+  {
+    icon: Clock,
+    title: "Early Retirement Options",
+    description:
+      "Explore whether early retirement is feasible and what trade-offs to consider.",
+  },
+  {
+    icon: Award,
+    title: "Certified Expertise",
+    description:
+      "Our advisors specialize in educator pensions and understand the systems you depend on.",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "I had no idea I was eligible for additional benefits until the team at Teacher's Pension reviewed my case. They helped me secure thousands more per year in retirement.",
+    name: "Sarah M.",
+    role: "Retired High School Teacher, 32 Years",
+  },
+  {
+    quote:
+      "The pension calculator gave me confidence in my retirement date. Knowing the exact numbers took away so much anxiety about leaving the classroom.",
+    name: "James T.",
+    role: "Middle School Principal, 28 Years",
+  },
+  {
+    quote:
+      "My husband and I both teach, and coordinating our pensions seemed impossible. Teacher's Pension made it straightforward and saved us from costly mistakes.",
+    name: "Linda & Robert K.",
+    role: "Elementary Educators, Combined 55 Years",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <HeroVideo
+        heading="Secure Your Retirement"
+        subheading="Expert pension consulting built exclusively for educators. We help you understand, maximize, and protect the benefits you have earned."
+        primaryCta={{
+          label: "Schedule Free Consultation",
+          href: "/contact",
+        }}
+        secondaryCta={{
+          label: "Calculate Your Pension",
+          href: "/calculator",
+        }}
+      />
+
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            title="Why Choose Us"
+            subtitle="Decades of experience helping educators navigate complex pension systems and retire with confidence."
+          />
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => (
+              <FeatureCard key={feature.title} {...feature} />
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="bg-muted py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            title="What Educators Say"
+            subtitle="Hear from teachers and administrators who planned their retirement with our help."
+          />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <TestimonialCard key={testimonial.name} {...testimonial} />
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <CtaSection
+        title="Ready to Plan Your Retirement?"
+        description="Schedule a free, no-obligation consultation with one of our pension specialists today."
+        buttonText="Get Started"
+        buttonHref="/contact"
+      />
+    </>
   );
 }
