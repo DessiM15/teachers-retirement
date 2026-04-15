@@ -31,7 +31,7 @@ export function CtaSection({
             href={buttonHref}
             className={buttonVariants({
               size: "lg",
-            }) + " bg-white text-primary border-white hover:bg-white/90 font-semibold text-base px-8 py-3 h-auto"}
+            }) + " !bg-white !text-primary !border-white hover:!bg-white/90 font-semibold text-base px-8 py-3 h-auto"}
           >
             {buttonText}
           </Link>

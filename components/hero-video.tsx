@@ -27,9 +27,9 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 py-24 lg:px-8">
         <div className="max-w-3xl animate-fade-up">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-6 font-sans">
+          <span className="inline-flex items-center rounded-full bg-primary/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary ring-1 ring-primary/30 mb-6 font-sans">
             Teacher Retirement Planning
-          </p>
+          </span>
 
           <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.5rem] lg:leading-[1.15]">
             When You Retire, Do You Want to Travel the County, the State, the
