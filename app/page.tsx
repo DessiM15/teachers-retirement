@@ -7,6 +7,8 @@ import {
   Award,
 } from "lucide-react";
 import { Hero } from "@/components/hero-video";
+import { StatsBar } from "@/components/stats-bar";
+import { ProblemSection } from "@/components/problem-section";
 import { SectionHeading } from "@/components/section-heading";
 import { FeatureCard } from "@/components/feature-card";
 import { TestimonialCard } from "@/components/testimonial-card";
@@ -76,6 +78,10 @@ export default function Home() {
   return (
     <>
       <Hero />
+
+      <StatsBar />
+
+      <ProblemSection />
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
