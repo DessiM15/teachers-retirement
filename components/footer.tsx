@@ -14,7 +14,7 @@ export function Footer() {
               alt="Teacher's Pension"
               width={160}
               height={48}
-              className="h-10 w-auto brightness-0 invert mb-4"
+              className="h-10 w-auto mb-4"
             />
             <p className="text-sm text-background/70 max-w-xs">
               {SITE_CONFIG.description}
