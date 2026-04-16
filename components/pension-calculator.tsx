@@ -17,24 +17,19 @@ export function PensionCalculator() {
   const [salary, setSalary] = useState("");
   const [yearsOfService, setYearsOfService] = useState("");
   const [retirementAge, setRetirementAge] = useState("65");
-  const [multiplier, setMultiplier] = useState("2.0");
+  const multiplier = 2.3;
 
   const handleRetirementAgeChange = (value: string | null) => {
     if (value) setRetirementAge(value);
-  };
-  const handleMultiplierChange = (value: string | null) => {
-    if (value) setMultiplier(value);
   };
 
   const currentAgeNum = parseFloat(currentAge) || 0;
   const salaryNum = parseFloat(salary) || 0;
   const yearsNum = parseFloat(yearsOfService) || 0;
   const retirementAgeNum = parseFloat(retirementAge);
-  const multiplierNum = parseFloat(multiplier);
-
   const additionalYears = Math.max(0, retirementAgeNum - currentAgeNum);
   const totalYears = yearsNum + additionalYears;
-  const annualPension = salaryNum * (multiplierNum / 100) * totalYears;
+  const annualPension = salaryNum * (multiplier / 100) * totalYears;
   const monthlyPension = annualPension / 12;
   const replacementRate = salaryNum > 0 ? (annualPension / salaryNum) * 100 : 0;
 
@@ -105,20 +100,7 @@ export function PensionCalculator() {
 
           <div className="space-y-2">
             <Label>Benefit Multiplier (%)</Label>
-            <Select value={multiplier} onValueChange={handleMultiplierChange}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select multiplier" />
-              </SelectTrigger>
-              <SelectContent>
-                {["1.5", "1.67", "1.8", "2.0", "2.2", "2.5", "3.0"].map(
-                  (m) => (
-                    <SelectItem key={m} value={m}>
-                      {m}%
-                    </SelectItem>
-                  )
-                )}
-              </SelectContent>
-            </Select>
+            <p className="text-sm font-medium py-2">{multiplier}%</p>
           </div>
         </CardContent>
       </Card>
