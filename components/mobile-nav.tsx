@@ -10,7 +10,7 @@ import { LanguageToggle } from "@/components/language-toggle";
 
 const NAV_KEYS = ["home", "about", "services", "districts", "calculator", "contact"] as const;
 
-export function MobileNav() {
+export function MobileNav({ solid }: { solid: boolean }) {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -18,7 +18,9 @@ export function MobileNav() {
     <div className="lg:hidden">
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center justify-center rounded-lg p-2 text-foreground hover:bg-muted"
+        className={`inline-flex items-center justify-center rounded-lg p-2 transition-colors ${
+          solid ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10"
+        }`}
         aria-label={open ? "Close menu" : "Open menu"}
       >
         {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

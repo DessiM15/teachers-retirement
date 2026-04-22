@@ -81,7 +81,7 @@ export function Navbar() {
           </Link>
         </nav>
 
-        <MobileNav />
+        <MobileNav solid={solid} />
       </div>
     </header>
   );
