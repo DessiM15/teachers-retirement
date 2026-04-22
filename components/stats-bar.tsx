@@ -1,10 +1,16 @@
-const stats = [
-  { value: "500+", label: "Teachers Helped" },
-  { value: "15+ Years", label: "Industry Experience" },
-  { value: "Multi-Carrier", label: "Insurance Access" },
-];
+"use client";
+
+import { useTranslation } from "@/lib/language-context";
 
 export function StatsBar() {
+  const { t } = useTranslation();
+
+  const stats = [
+    { value: "500+", label: t.stats.teachersHelped },
+    { value: "15+ Years", label: t.stats.experience },
+    { value: "Multi-Carrier", label: t.stats.insurance },
+  ];
+
   return (
     <section className="bg-cream border-y border-primary/20 py-8">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">

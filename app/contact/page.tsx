@@ -1,61 +1,63 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useEffect } from "react";
 import { Phone, Globe, Award, Mail, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContactForm } from "@/components/contact-form";
 import { SITE_CONFIG } from "@/lib/constants";
-
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Schedule a free consultation with our pension specialists. We are here to help you plan a secure retirement.",
-};
+import { useTranslation } from "@/lib/language-context";
 
 const { agent, locations } = SITE_CONFIG;
 
-const contactInfo = [
-  {
-    icon: Phone,
-    label: "Toll-Free",
-    value: SITE_CONFIG.phone,
-    detail: "Mon-Fri, 8am-6pm",
-  },
-  {
-    icon: Phone,
-    label: "Direct",
-    value: agent.directPhone,
-    detail: "Call or text Rigoberto directly",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: SITE_CONFIG.email,
-    detail: "We respond within 24 hours",
-  },
-  {
-    icon: Globe,
-    label: "Website",
-    value: "tpensions.com",
-    detail: "Learn more about our services",
-  },
-  {
-    icon: Award,
-    label: "License",
-    value: `No. ${agent.license}`,
-    detail: `${agent.name} — ${agent.title}`,
-  },
-];
-
 export default function ContactPage() {
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = `${t.contact.metaTitle} | Teacher's Pension`;
+  }, [t]);
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      label: t.contact.tollFree,
+      value: SITE_CONFIG.phone,
+      detail: t.contact.tollFreeDetail,
+    },
+    {
+      icon: Phone,
+      label: t.contact.direct,
+      value: agent.directPhone,
+      detail: t.contact.directDetail,
+    },
+    {
+      icon: Mail,
+      label: t.contact.email,
+      value: SITE_CONFIG.email,
+      detail: t.contact.emailDetail,
+    },
+    {
+      icon: Globe,
+      label: t.contact.website,
+      value: "tpensions.com",
+      detail: t.contact.websiteDetail,
+    },
+    {
+      icon: Award,
+      label: t.contact.license,
+      value: `No. ${agent.license}`,
+      detail: `${agent.name} — ${agent.title}`,
+    },
+  ];
+
   return (
     <>
       <section className="bg-primary py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
           <h1 className="text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
-            Contact Us
+            {t.contact.pageTitle}
           </h1>
           <p className="mt-4 text-lg text-primary-foreground/80">
-            Ready to take the next step? Reach out for a free, no-obligation
-            consultation with {agent.name}.
+            {t.contact.pageSubtitle} {agent.name}.
           </p>
         </div>
       </section>
@@ -99,10 +101,10 @@ export default function ContactPage() {
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Our Locations
+              {t.contact.locationsTitle}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Serving educators across multiple states with local offices.
+              {t.contact.locationsSubtitle}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

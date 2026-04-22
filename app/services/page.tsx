@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useEffect } from "react";
 import {
   PiggyBank,
   BarChart3,
@@ -14,127 +16,75 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
 import { CtaSection } from "@/components/cta-section";
 import { buttonVariants } from "@/components/ui/button";
-
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Retirement planning, pension analysis, life insurance, and financial planning services for educators. Supplement your pension and bridge the income gap.",
-};
-
-const services = [
-  {
-    id: "retirement-planning",
-    icon: PiggyBank,
-    title: "Retirement Planning",
-    subtitle: "Bridge your retirement income gap",
-    description:
-      "There are many retirement plan types and strategies to help supplement your Pension and Social Security. The question is: which plan and strategy is right for you to bridge your Retirement Income Gap?",
-    details: [
-      {
-        icon: FileText,
-        title: "403(b) Plans",
-        text: "A tax-sheltered annuity plan offered by public schools and tax-exempt organizations. Advantages include faster vesting and the ability to make additional catch-up contributions.",
-      },
-      {
-        icon: DollarSign,
-        title: "457 Plans",
-        text: "A tax-advantaged, deferred compensation retirement plan offered by state and local governments. Unlike 401(k) plans, there is no 10% early withdrawal penalty before age 59½.",
-      },
-      {
-        icon: TrendingUp,
-        title: "Investment Strategy",
-        text: "Your time horizon matters — whether you are 2 years or 30 years from retirement will significantly impact your decision on the right investment vehicle, risk tolerance, and strategy.",
-      },
-    ],
-  },
-  {
-    id: "pension-analysis",
-    icon: BarChart3,
-    title: "Pension Analysis",
-    subtitle: "Understand what your pension is really worth",
-    description:
-      "Your pension is likely the most valuable financial asset you have. We provide a detailed analysis of your projected pension income, helping you understand your benefit options, survivor elections, and how your service years and salary history affect your final calculation.",
-    details: [
-      {
-        icon: Target,
-        title: "Benefit Projections",
-        text: "Detailed modeling of your projected pension income based on your unique service history, salary, and retirement date options.",
-      },
-      {
-        icon: Clock,
-        title: "Retirement Timing",
-        text: "Analysis of how working additional years or retiring early impacts your monthly benefit — so you can choose the date that works for your life.",
-      },
-      {
-        icon: DollarSign,
-        title: "Income Gap Analysis",
-        text: "Your pension alone may replace only 50-60% of your working salary. We identify the gap and build a strategy to fill it.",
-      },
-    ],
-  },
-  {
-    id: "life-insurance",
-    icon: Shield,
-    title: "Life Insurance & Asset Protection",
-    subtitle: "Protect your retirement while it grows",
-    description:
-      "Part of comprehensive financial planning is to ensure that you are properly protected while your retirement assets are growing. One of the main reasons individuals cannot afford to retire, other than proper savings, is medical expenses and liquidating assets due to unexpected life events.",
-    details: [
-      {
-        icon: Shield,
-        title: "Term Life Insurance",
-        text: "A type of life insurance that guarantees payment of a stated death benefit if the covered person dies during a specified term. Affordable protection for your family's future.",
-      },
-      {
-        icon: FileText,
-        title: "Asset Protection",
-        text: "Safeguard your retirement accounts and home equity through proper insurance coverage during the accumulation phase of your retirement planning.",
-      },
-      {
-        icon: TrendingUp,
-        title: "Personalized Plans",
-        text: "Our financial professionals help you personalize a life insurance plan that safeguards your family's future and empowers you to enjoy life more today.",
-      },
-    ],
-  },
-  {
-    id: "financial-planning",
-    icon: Target,
-    title: "Build a Financial Plan",
-    subtitle: "See the full picture, not just the pieces",
-    description:
-      "Pension, Social Security, supplemental insurance, 403(b) plans — these pieces need to work together. Most educators have never seen them side by side. We build a comprehensive financial plan that coordinates all your retirement income sources into one clear strategy.",
-    details: [
-      {
-        icon: BarChart3,
-        title: "Comprehensive Analysis",
-        text: "We look at your pension, Social Security, savings, insurance, and expenses to build a complete picture of your retirement readiness.",
-      },
-      {
-        icon: DollarSign,
-        title: "Tax Strategy",
-        text: "Tax-efficient withdrawal strategies to help you keep more of your retirement income and minimize your overall tax burden.",
-      },
-      {
-        icon: Clock,
-        title: "Spousal Coordination",
-        text: "If both spouses work in education, coordinating pension elections and survivor benefits can maximize your combined household income in retirement.",
-      },
-    ],
-  },
-];
+import { useTranslation } from "@/lib/language-context";
 
 export default function ServicesPage() {
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = `${t.services.metaTitle} | Teacher's Pension`;
+  }, [t]);
+
+  const services = [
+    {
+      id: "retirement-planning",
+      icon: PiggyBank,
+      title: t.services.retirementPlanningTitle,
+      subtitle: t.services.retirementPlanningSubtitle,
+      description: t.services.retirementPlanningDesc,
+      details: [
+        { icon: FileText, title: t.services.plans403b, text: t.services.plans403bDesc },
+        { icon: DollarSign, title: t.services.plans457, text: t.services.plans457Desc },
+        { icon: TrendingUp, title: t.services.investmentStrategy, text: t.services.investmentStrategyDesc },
+      ],
+    },
+    {
+      id: "pension-analysis",
+      icon: BarChart3,
+      title: t.services.pensionAnalysisTitle,
+      subtitle: t.services.pensionAnalysisSubtitle,
+      description: t.services.pensionAnalysisDesc,
+      details: [
+        { icon: Target, title: t.services.benefitProjections, text: t.services.benefitProjectionsDesc },
+        { icon: Clock, title: t.services.retirementTiming, text: t.services.retirementTimingDesc },
+        { icon: DollarSign, title: t.services.incomeGapAnalysis, text: t.services.incomeGapAnalysisDesc },
+      ],
+    },
+    {
+      id: "life-insurance",
+      icon: Shield,
+      title: t.services.lifeInsuranceTitle,
+      subtitle: t.services.lifeInsuranceSubtitle,
+      description: t.services.lifeInsuranceDesc,
+      details: [
+        { icon: Shield, title: t.services.termLife, text: t.services.termLifeDesc },
+        { icon: FileText, title: t.services.assetProtection, text: t.services.assetProtectionDesc },
+        { icon: TrendingUp, title: t.services.personalizedPlans, text: t.services.personalizedPlansDesc },
+      ],
+    },
+    {
+      id: "financial-planning",
+      icon: Target,
+      title: t.services.financialPlanningTitle,
+      subtitle: t.services.financialPlanningSubtitle,
+      description: t.services.financialPlanningDesc,
+      details: [
+        { icon: BarChart3, title: t.services.comprehensiveAnalysis, text: t.services.comprehensiveAnalysisDesc },
+        { icon: DollarSign, title: t.services.taxStrategy, text: t.services.taxStrategyDesc },
+        { icon: Clock, title: t.services.spousalCoordination, text: t.services.spousalCoordinationDesc },
+      ],
+    },
+  ];
+
   return (
     <>
       <section className="bg-primary py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
           <h1 className="text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
-            Our Services
+            {t.services.pageTitle}
           </h1>
           <p className="mt-4 text-lg text-primary-foreground/80">
-            Comprehensive retirement planning and financial wellness education
-            designed specifically for educators — at no cost to you.
+            {t.services.pageSubtitle}
           </p>
         </div>
       </section>
@@ -197,30 +147,30 @@ export default function ServicesPage() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
           <SectionHeading
-            title="Not Sure Where to Start?"
-            subtitle="Try our free pension calculator to get a quick estimate of your retirement income, or reach out for a personal consultation."
+            title={t.services.notSureTitle}
+            subtitle={t.services.notSureSubtitle}
           />
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/calculator"
               className={buttonVariants({ size: "lg" })}
             >
-              Try the Calculator
+              {t.services.tryCalculator}
             </Link>
             <Link
               href="/contact"
               className={buttonVariants({ variant: "outline", size: "lg" })}
             >
-              Contact Us
+              {t.services.contactUs}
             </Link>
           </div>
         </div>
       </section>
 
       <CtaSection
-        title="Your Retirement Deserves a Plan"
-        description="Let us help you understand your options and build a strategy that works for your life."
-        buttonText="Schedule a Free Review"
+        title={t.services.ctaTitle}
+        description={t.services.ctaDescription}
+        buttonText={t.services.ctaButton}
         buttonHref="/contact"
       />
     </>

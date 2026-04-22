@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from "@/lib/language-context";
 
 export function PensionCalculator() {
   const [currentAge, setCurrentAge] = useState("");
@@ -18,6 +19,7 @@ export function PensionCalculator() {
   const [yearsOfService, setYearsOfService] = useState("");
   const [retirementAge, setRetirementAge] = useState("65");
   const multiplier = 2.3;
+  const { t } = useTranslation();
 
   const handleRetirementAgeChange = (value: string | null) => {
     if (value) setRetirementAge(value);
@@ -39,15 +41,15 @@ export function PensionCalculator() {
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
       <Card>
         <CardHeader>
-          <CardTitle>Your Information</CardTitle>
+          <CardTitle>{t.calculator.yourInfo}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-5">
           <div className="space-y-2">
-            <Label htmlFor="currentAge">Current Age</Label>
+            <Label htmlFor="currentAge">{t.calculator.currentAge}</Label>
             <Input
               id="currentAge"
               type="number"
-              placeholder="e.g. 45"
+              placeholder={t.calculator.currentAgePlaceholder}
               value={currentAge}
               onChange={(e) => setCurrentAge(e.target.value)}
               min={20}
@@ -56,11 +58,11 @@ export function PensionCalculator() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="salary">Current Annual Salary ($)</Label>
+            <Label htmlFor="salary">{t.calculator.salary}</Label>
             <Input
               id="salary"
               type="number"
-              placeholder="e.g. 65000"
+              placeholder={t.calculator.salaryPlaceholder}
               value={salary}
               onChange={(e) => setSalary(e.target.value)}
               min={0}
@@ -69,12 +71,12 @@ export function PensionCalculator() {
 
           <div className="space-y-2">
             <Label htmlFor="yearsOfService">
-              Current Years of Service
+              {t.calculator.yearsOfService}
             </Label>
             <Input
               id="yearsOfService"
               type="number"
-              placeholder="e.g. 20"
+              placeholder={t.calculator.yearsOfServicePlaceholder}
               value={yearsOfService}
               onChange={(e) => setYearsOfService(e.target.value)}
               min={0}
@@ -83,10 +85,10 @@ export function PensionCalculator() {
           </div>
 
           <div className="space-y-2">
-            <Label>Target Retirement Age</Label>
+            <Label>{t.calculator.retirementAge}</Label>
             <Select value={retirementAge} onValueChange={handleRetirementAgeChange}>
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select retirement age" />
+                <SelectValue placeholder={t.calculator.retirementAgePlaceholder} />
               </SelectTrigger>
               <SelectContent>
                 {[55, 57, 58, 59, 60, 62, 65, 67, 70].map((age) => (
@@ -99,7 +101,7 @@ export function PensionCalculator() {
           </div>
 
           <div className="space-y-2">
-            <Label>Benefit Multiplier (%)</Label>
+            <Label>{t.calculator.multiplier}</Label>
             <p className="text-sm font-medium py-2">{multiplier}%</p>
           </div>
         </CardContent>
@@ -107,18 +109,18 @@ export function PensionCalculator() {
 
       <Card className={hasInput ? "" : "opacity-60"}>
         <CardHeader>
-          <CardTitle>Estimated Pension</CardTitle>
+          <CardTitle>{t.calculator.estimatedPension}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <p className="text-sm text-muted-foreground">Monthly Pension</p>
+              <p className="text-sm text-muted-foreground">{t.calculator.monthlyPension}</p>
               <p className="text-3xl font-bold text-primary">
                 ${hasInput ? monthlyPension.toLocaleString("en-US", { maximumFractionDigits: 0 }) : "---"}
               </p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Annual Pension</p>
+              <p className="text-sm text-muted-foreground">{t.calculator.annualPension}</p>
               <p className="text-3xl font-bold text-primary">
                 ${hasInput ? annualPension.toLocaleString("en-US", { maximumFractionDigits: 0 }) : "---"}
               </p>
@@ -127,14 +129,14 @@ export function PensionCalculator() {
 
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <p className="text-sm text-muted-foreground">Replacement Rate</p>
+              <p className="text-sm text-muted-foreground">{t.calculator.replacementRate}</p>
               <p className="text-2xl font-semibold text-foreground">
                 {hasInput ? `${replacementRate.toFixed(1)}%` : "---"}
               </p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground">
-                Total Years at Retirement
+                {t.calculator.totalYears}
               </p>
               <p className="text-2xl font-semibold text-foreground">
                 {hasInput ? totalYears.toFixed(0) : "---"}
@@ -144,18 +146,15 @@ export function PensionCalculator() {
 
           <div className="rounded-lg bg-muted p-4">
             <p className="text-xs font-medium text-muted-foreground mb-1">
-              Formula Used
+              {t.calculator.formulaLabel}
             </p>
             <p className="text-sm text-foreground">
-              Annual Pension = Salary x (Multiplier / 100) x Total Years
+              {t.calculator.formula}
             </p>
           </div>
 
           <p className="text-xs text-muted-foreground leading-relaxed">
-            This calculator provides estimates only and does not account for
-            cost-of-living adjustments, early retirement penalties, or
-            plan-specific rules. Please consult with one of our advisors for a
-            personalized analysis.
+            {t.calculator.disclaimer}
           </p>
         </CardContent>
       </Card>

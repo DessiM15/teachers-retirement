@@ -5,13 +5,18 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
+import { useTranslation } from "@/lib/language-context";
 import { buttonVariants } from "@/components/ui/button";
 import { MobileNav } from "@/components/mobile-nav";
+import { LanguageToggle } from "@/components/language-toggle";
+
+const NAV_KEYS = ["home", "about", "services", "districts", "calculator", "contact"] as const;
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const { t } = useTranslation();
 
   // Only use transparent/white style on homepage before scroll
   const solid = scrolled || !isHome;
@@ -46,13 +51,13 @@ export function Navbar() {
             <span className={`block text-xs tracking-wide font-sans transition-colors duration-300 ${
               solid ? "text-muted-foreground" : "text-white"
             }`}>
-              Retirement & Insurance Specialist
+              {t.nav.tagline}
             </span>
           </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map((link, i) => (
             <Link
               key={link.href}
               href={link.href}
@@ -62,14 +67,17 @@ export function Navbar() {
                   : "text-white/90 hover:text-white"
               }`}
             >
-              {link.label}
+              {t.nav[NAV_KEYS[i]]}
             </Link>
           ))}
+          <div className="ml-3">
+            <LanguageToggle variant={solid ? "dark" : "light"} />
+          </div>
           <Link
             href="/contact#lead-form"
-            className={buttonVariants({ size: "lg" }) + " ml-4"}
+            className={buttonVariants({ size: "lg" }) + " ml-3"}
           >
-            Book Your Free Review
+            {t.nav.bookReview}
           </Link>
         </nav>
 

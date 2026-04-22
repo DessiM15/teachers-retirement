@@ -1,11 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
+import { useTranslation } from "@/lib/language-context";
 import { Phone } from "lucide-react";
+
+const NAV_KEYS = ["home", "about", "services", "districts", "calculator", "contact"] as const;
 
 const { agent } = SITE_CONFIG;
 
 export function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-foreground text-background">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
@@ -25,16 +32,16 @@ export function Footer() {
 
           <div>
             <h3 className="text-base font-semibold uppercase tracking-wider text-background mb-5">
-              Quick Links
+              {t.footer.quickLinks}
             </h3>
             <nav className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
+              {NAV_LINKS.map((link, i) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className="text-base text-background/70 hover:text-primary transition-colors"
                 >
-                  {link.label}
+                  {t.nav[NAV_KEYS[i]]}
                 </Link>
               ))}
             </nav>
@@ -42,22 +49,22 @@ export function Footer() {
 
           <div>
             <h3 className="text-base font-semibold uppercase tracking-wider text-background mb-5">
-              Contact
+              {t.footer.contactTitle}
             </h3>
             <div className="flex flex-col gap-3">
               <p className="text-lg font-semibold text-background">
                 {agent.name}
               </p>
               <p className="text-sm text-background/70">
-                {agent.title} | License No. {agent.license}
+                {agent.title} | {t.footer.licenseNo} {agent.license}
               </p>
               <div className="flex items-center gap-2.5 text-base text-background/80">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>Direct: {agent.directPhone}</span>
+                <span>{t.footer.directLabel} {agent.directPhone}</span>
               </div>
               <div className="flex items-center gap-2.5 text-base text-background/80">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>Office: {agent.officePhone}</span>
+                <span>{t.footer.officeLabel} {agent.officePhone}</span>
               </div>
             </div>
           </div>
@@ -65,9 +72,8 @@ export function Footer() {
 
         <div className="mt-12 border-t border-background/10 pt-8 text-center">
           <p className="text-sm text-background/50">
-            &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights
-            reserved. This site provides general information and does not
-            constitute financial advice.
+            &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. {t.footer.copyright}{" "}
+            {t.footer.disclaimer}
           </p>
         </div>
       </div>

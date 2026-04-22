@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
+import { useTranslation } from "@/lib/language-context";
 
 export function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden -mt-20 pt-20">
       {/* Full-bleed background image */}
@@ -28,12 +33,11 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 py-24 lg:px-8">
         <div className="max-w-3xl animate-fade-up">
           <span className="inline-flex items-center rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-6 font-sans">
-            Teacher Retirement Planning
+            {t.hero.badge}
           </span>
 
           <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.5rem] lg:leading-[1.15]">
-            When You Retire, Do You Want to Travel the County, the State, the
-            Country — or the World?
+            {t.hero.title}
           </h1>
 
           {/* Accent rule */}
@@ -43,8 +47,7 @@ export function Hero() {
             className="mt-6 max-w-lg text-lg text-white/80 font-sans animate-fade-up"
             style={{ animationDelay: "150ms" }}
           >
-            We help Texas educators understand their pension, maximize their
-            benefits, and retire with clarity and confidence.
+            {t.hero.subtitle}
           </p>
 
           <div
@@ -58,7 +61,7 @@ export function Hero() {
                 " text-base px-8 py-4 h-auto"
               }
             >
-              Get My Free Retirement Review &rarr;
+              {t.hero.cta} &rarr;
             </Link>
           </div>
 
@@ -66,14 +69,14 @@ export function Hero() {
             className="mt-4 text-sm text-white/60 font-sans animate-fade-up"
             style={{ animationDelay: "450ms" }}
           >
-            No cost. No pressure. Just clarity.
+            {t.hero.trust}
           </p>
 
           <span
             className="mt-8 inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-white/80 ring-1 ring-white/20 font-sans animate-fade-up"
             style={{ animationDelay: "600ms" }}
           >
-            Licensed Independent Agent | Texas
+            {t.hero.license}
           </span>
         </div>
       </div>

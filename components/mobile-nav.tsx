@@ -4,10 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
+import { useTranslation } from "@/lib/language-context";
 import { buttonVariants } from "@/components/ui/button";
+import { LanguageToggle } from "@/components/language-toggle";
+
+const NAV_KEYS = ["home", "about", "services", "districts", "calculator", "contact"] as const;
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <div className="lg:hidden">
@@ -22,22 +27,25 @@ export function MobileNav() {
       {open && (
         <div className="absolute left-0 right-0 top-full z-50 border-b bg-background shadow-lg max-h-[calc(100vh-5rem)] overflow-y-auto">
           <nav className="flex flex-col px-6 py-4 gap-1">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
               >
-                {link.label}
+                {t.nav[NAV_KEYS[i]]}
               </Link>
             ))}
+            <div className="px-3 py-2">
+              <LanguageToggle />
+            </div>
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
               className={buttonVariants({ size: "lg" }) + " mt-2"}
             >
-              Free Consultation
+              {t.nav.freeConsultation}
             </Link>
           </nav>
         </div>

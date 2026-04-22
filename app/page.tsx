@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Shield,
   Calculator,
@@ -19,89 +21,35 @@ import { TestimonialCard } from "@/components/testimonial-card";
 import { CtaSection } from "@/components/cta-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
+import { useTranslation } from "@/lib/language-context";
 
-const whoWeServe = [
-  {
-    icon: GraduationCap,
-    title: "Teachers",
-    description:
-      "From first-year educators to 30-year veterans, we help certificated staff understand their pension, plan for the income gap, and retire with confidence.",
-  },
-  {
-    icon: Briefcase,
-    title: "Classified Staff",
-    description:
-      "Support staff, paraprofessionals, and office personnel deserve the same quality retirement education. We make sure they get it.",
-  },
-  {
-    icon: UserCheck,
-    title: "Administrators",
-    description:
-      "Principals, superintendents, and district leaders face unique retirement decisions. We provide the analysis to make them wisely.",
-  },
-];
-
-const features = [
-  {
-    icon: Shield,
-    title: "Pension Protection",
-    description:
-      "We help you understand and maximize your pension benefits so nothing is left on the table.",
-  },
-  {
-    icon: Calculator,
-    title: "Benefit Analysis",
-    description:
-      "Detailed calculations of your projected retirement income based on your unique service history.",
-  },
-  {
-    icon: Users,
-    title: "Spousal Planning",
-    description:
-      "Coordinate benefits between spouses to optimize your combined retirement income.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Investment Guidance",
-    description:
-      "Supplement your pension with smart investment strategies tailored for educators.",
-  },
-  {
-    icon: Clock,
-    title: "Early Retirement Options",
-    description:
-      "Explore whether early retirement is feasible and what trade-offs to consider.",
-  },
-  {
-    icon: Award,
-    title: "Certified Expertise",
-    description:
-      "Our advisors specialize in educator pensions and understand the systems you depend on.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "I had no idea I was eligible for additional benefits until the team at Teacher's Pension reviewed my case. They helped me secure thousands more per year in retirement.",
-    name: "Sarah M.",
-    role: "Retired High School Teacher, 32 Years",
-  },
-  {
-    quote:
-      "The pension calculator gave me confidence in my retirement date. Knowing the exact numbers took away so much anxiety about leaving the classroom.",
-    name: "James T.",
-    role: "Middle School Principal, 28 Years",
-  },
-  {
-    quote:
-      "My husband and I both teach, and coordinating our pensions seemed impossible. Teacher's Pension made it straightforward and saved us from costly mistakes.",
-    name: "Linda & Robert K.",
-    role: "Elementary Educators, Combined 55 Years",
-  },
-];
+const whoWeServeIcons = [GraduationCap, Briefcase, UserCheck];
+const featureIcons = [Shield, Calculator, Users, TrendingUp, Clock, Award];
 
 export default function Home() {
+  const { t } = useTranslation();
+
+  const whoWeServe = [
+    { icon: whoWeServeIcons[0], title: t.home.teachers, description: t.home.teachersDesc },
+    { icon: whoWeServeIcons[1], title: t.home.classifiedStaff, description: t.home.classifiedStaffDesc },
+    { icon: whoWeServeIcons[2], title: t.home.administrators, description: t.home.administratorsDesc },
+  ];
+
+  const features = [
+    { icon: featureIcons[0], title: t.home.pensionProtection, description: t.home.pensionProtectionDesc },
+    { icon: featureIcons[1], title: t.home.benefitAnalysis, description: t.home.benefitAnalysisDesc },
+    { icon: featureIcons[2], title: t.home.spousalPlanning, description: t.home.spousalPlanningDesc },
+    { icon: featureIcons[3], title: t.home.investmentGuidance, description: t.home.investmentGuidanceDesc },
+    { icon: featureIcons[4], title: t.home.earlyRetirement, description: t.home.earlyRetirementDesc },
+    { icon: featureIcons[5], title: t.home.certifiedExpertise, description: t.home.certifiedExpertiseDesc },
+  ];
+
+  const testimonials = [
+    { quote: t.home.testimonial1Quote, name: t.home.testimonial1Name, role: t.home.testimonial1Role },
+    { quote: t.home.testimonial2Quote, name: t.home.testimonial2Name, role: t.home.testimonial2Role },
+    { quote: t.home.testimonial3Quote, name: t.home.testimonial3Name, role: t.home.testimonial3Role },
+  ];
+
   return (
     <>
       <Hero />
@@ -115,12 +63,12 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="text-center mb-4">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4 font-sans">
-              Who We Serve
+              {t.home.whoWeServeLabel}
             </p>
           </div>
           <SectionHeading
-            title="Retirement Education for Every District Employee"
-            subtitle="Whether you're certificated, classified, or administrative — you deserve high-quality, unbiased retirement guidance at no cost."
+            title={t.home.whoWeServeTitle}
+            subtitle={t.home.whoWeServeSubtitle}
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             {whoWeServe.map((item) => {
@@ -147,7 +95,7 @@ export default function Home() {
               href="/services"
               className={buttonVariants({ variant: "outline", size: "lg" })}
             >
-              Explore Our Services
+              {t.home.exploreServices}
             </Link>
           </div>
         </div>
@@ -156,8 +104,8 @@ export default function Home() {
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <SectionHeading
-            title="Why Choose Us"
-            subtitle="Decades of experience helping educators navigate complex pension systems and retire with confidence."
+            title={t.home.whyChooseTitle}
+            subtitle={t.home.whyChooseSubtitle}
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
@@ -170,8 +118,8 @@ export default function Home() {
       <section className="bg-muted py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <SectionHeading
-            title="What Educators Say"
-            subtitle="Hear from teachers and administrators who planned their retirement with our help."
+            title={t.home.testimonialsTitle}
+            subtitle={t.home.testimonialsSubtitle}
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {testimonials.map((testimonial) => (
@@ -182,9 +130,9 @@ export default function Home() {
       </section>
 
       <CtaSection
-        title="Ready to Plan Your Retirement?"
-        description="Schedule a free, no-obligation consultation with one of our pension specialists today."
-        buttonText="Get Started"
+        title={t.home.ctaTitle}
+        description={t.home.ctaDescription}
+        buttonText={t.home.ctaButton}
         buttonHref="/contact"
       />
     </>
