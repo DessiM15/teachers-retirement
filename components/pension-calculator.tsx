@@ -34,6 +34,7 @@ export function PensionCalculator() {
   const annualPension = salaryNum * (multiplier / 100) * totalYears;
   const monthlyPension = annualPension / 12;
   const replacementRate = salaryNum > 0 ? (annualPension / salaryNum) * 100 : 0;
+  const incomeGap = salaryNum > 0 ? 100 - replacementRate : 0;
 
   const hasInput = currentAgeNum > 0 && salaryNum > 0;
 
@@ -127,11 +128,20 @@ export function PensionCalculator() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-3 gap-6">
             <div>
               <p className="text-sm text-muted-foreground">{t.calculator.replacementRate}</p>
               <p className="text-2xl font-semibold text-foreground">
                 {hasInput ? `${replacementRate.toFixed(1)}%` : "---"}
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground">{t.calculator.incomeGap}</p>
+              <p className="text-2xl font-semibold text-destructive">
+                {hasInput ? `${incomeGap.toFixed(1)}%` : "---"}
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                {t.calculator.incomeGapDetail}
               </p>
             </div>
             <div>
@@ -152,6 +162,14 @@ export function PensionCalculator() {
               {t.calculator.formula}
             </p>
           </div>
+
+          {hasInput && incomeGap > 0 && (
+            <div className="rounded-lg border-2 border-primary bg-primary/5 p-4 text-center">
+              <p className="text-sm font-medium text-foreground">
+                {t.calculator.incomeGapCta}
+              </p>
+            </div>
+          )}
 
           <p className="text-xs text-muted-foreground leading-relaxed">
             {t.calculator.disclaimer}

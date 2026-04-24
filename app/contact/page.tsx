@@ -107,7 +107,7 @@ export default function ContactPage() {
               {t.contact.locationsSubtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto max-w-sm grid grid-cols-1 gap-6">
             {locations.map((location) => (
               <Card key={location.name}>
                 <CardContent className="pt-2">

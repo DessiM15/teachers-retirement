@@ -323,6 +323,11 @@ const en = {
     totalYears: "Total Years at Retirement",
     formulaLabel: "Formula Used",
     formula: "Annual Pension = Salary x (Multiplier / 100) x Total Years",
+    incomeGap: "Income Gap",
+    incomeGapDetail:
+      "The portion of your salary not covered by your pension",
+    incomeGapCta:
+      "Want to close this gap? Call Robert C. at 682.557.9603 to explore your options.",
     disclaimer:
       "This calculator provides estimates only and does not account for cost-of-living adjustments, early retirement penalties, or plan-specific rules. Please consult with one of our advisors for a personalized analysis.",
     ctaTitle: "Want a Personalized Analysis?",
@@ -342,7 +347,7 @@ const en = {
     tollFree: "Toll-Free",
     tollFreeDetail: "Mon-Fri, 8am-6pm",
     direct: "Direct",
-    directDetail: "Call or text Rigoberto directly",
+    directDetail: "Contact Robert C.",
     email: "Email",
     emailDetail: "We respond within 24 hours",
     website: "Website",
@@ -350,7 +355,7 @@ const en = {
     license: "License",
     locationsTitle: "Our Locations",
     locationsSubtitle:
-      "Serving educators across multiple states with local offices.",
+      "Serving educators from our Texas office.",
   },
 
   // Contact Form

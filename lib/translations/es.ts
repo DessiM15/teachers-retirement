@@ -323,6 +323,11 @@ const es: Translations = {
     formulaLabel: "Fórmula Utilizada",
     formula:
       "Pensión Anual = Salario x (Multiplicador / 100) x Años Totales",
+    incomeGap: "Brecha de Ingresos",
+    incomeGapDetail:
+      "La porción de su salario no cubierta por su pensión",
+    incomeGapCta:
+      "¿Quiere cerrar esta brecha? Llame a Robert C. al 682.557.9603 para explorar sus opciones.",
     disclaimer:
       "Esta calculadora proporciona solo estimaciones y no tiene en cuenta los ajustes por costo de vida, penalidades por jubilación anticipada o reglas específicas del plan. Consulte con uno de nuestros asesores para un análisis personalizado.",
     ctaTitle: "¿Desea un Análisis Personalizado?",
@@ -342,7 +347,7 @@ const es: Translations = {
     tollFree: "Línea Gratuita",
     tollFreeDetail: "Lun-Vie, 8am-6pm",
     direct: "Directo",
-    directDetail: "Llame o envíe un mensaje a Rigoberto directamente",
+    directDetail: "Contacte a Robert C.",
     email: "Correo Electrónico",
     emailDetail: "Respondemos dentro de 24 horas",
     website: "Sitio Web",
@@ -350,7 +355,7 @@ const es: Translations = {
     license: "Licencia",
     locationsTitle: "Nuestras Ubicaciones",
     locationsSubtitle:
-      "Sirviendo a educadores en múltiples estados con oficinas locales.",
+      "Sirviendo a educadores desde nuestra oficina en Texas.",
   },
 
   // Formulario de Contacto
