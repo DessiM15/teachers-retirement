@@ -55,6 +55,9 @@ const es: Translations = {
 
   // Página Principal
   home: {
+    calculatorTitle: "Vea Sus Números",
+    calculatorSubtitle:
+      "Ingrese su información para estimar su pensión y ver su brecha de ingresos de jubilación.",
     whoWeServeLabel: "A Quién Servimos",
     whoWeServeTitle: "Educación de Jubilación para Cada Empleado del Distrito",
     whoWeServeSubtitle:

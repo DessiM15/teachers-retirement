@@ -15,6 +15,7 @@ import Link from "next/link";
 import { Hero } from "@/components/hero-video";
 import { StatsBar } from "@/components/stats-bar";
 import { ProblemSection } from "@/components/problem-section";
+import { PensionCalculator } from "@/components/pension-calculator";
 import { SectionHeading } from "@/components/section-heading";
 import { FeatureCard } from "@/components/feature-card";
 import { TestimonialCard } from "@/components/testimonial-card";
@@ -57,6 +58,17 @@ export default function Home() {
       <StatsBar />
 
       <ProblemSection />
+
+      {/* Calculator */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <SectionHeading
+            title={t.home.calculatorTitle}
+            subtitle={t.home.calculatorSubtitle}
+          />
+          <PensionCalculator />
+        </div>
+      </section>
 
       {/* Who We Serve */}
       <section className="bg-white py-20 sm:py-28">

@@ -53,6 +53,9 @@ const en = {
 
   // Home Page
   home: {
+    calculatorTitle: "See Your Numbers",
+    calculatorSubtitle:
+      "Enter your info below to estimate your pension and see your retirement income gap.",
     whoWeServeLabel: "Who We Serve",
     whoWeServeTitle: "Retirement Education for Every District Employee",
     whoWeServeSubtitle:
